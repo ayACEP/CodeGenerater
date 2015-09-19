@@ -1,0 +1,55 @@
+﻿<Page x:Class="CodeGenerater.EditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CodeGenerater"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="600"
+      Title="EditPage">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
+        <UniformGrid Grid.ColumnSpan="2" Columns="3" Rows="2" Margin="0,5,5,5">
+            <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5, 0">
+                <TextBlock Text="替换源1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBox x:Name="textBoxSrc1" HorizontalAlignment="Stretch" Height="23" VerticalAlignment="Center" TextWrapping="NoWrap" MaxLines="1" Margin="5,0,0,0" VerticalContentAlignment="Center" Text="${SourceData}" />
+            </DockPanel>
+            <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5, 0">
+                <TextBlock Text="替换源2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBox x:Name="textBoxSrc2" HorizontalAlignment="Stretch" Height="23" VerticalAlignment="Center" TextWrapping="NoWrap" MaxLines="1" Margin="5,0,0,0" VerticalContentAlignment="Center" Text="${sourceData}" />
+            </DockPanel>
+            <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5, 0">
+                <TextBlock Text="替换源3" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBox x:Name="textBoxSrc3" HorizontalAlignment="Stretch" Height="23" VerticalAlignment="Center" TextWrapping="NoWrap" MaxLines="1" Margin="5,0,0,0" VerticalContentAlignment="Center" Text="${source_data}" />
+            </DockPanel>
+            <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5, 0">
+                <TextBlock Text="替换为1" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBox x:Name="textBoxDest1" HorizontalAlignment="Stretch" Height="23" VerticalAlignment="Center" TextWrapping="NoWrap" MaxLines="1" Margin="5,0,0,0" VerticalContentAlignment="Center" TextChanged="TextChanged" />
+            </DockPanel>
+            <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5, 0">
+                <TextBlock Text="替换为2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBox x:Name="textBoxDest2" HorizontalAlignment="Stretch" Height="23" VerticalAlignment="Center" TextWrapping="NoWrap" MaxLines="1" Margin="5,0,0,0" VerticalContentAlignment="Center" TextChanged="TextChanged" />
+            </DockPanel>
+            <DockPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="5, 0">
+                <TextBlock Text="替换为3" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBox x:Name="textBoxDest3" HorizontalAlignment="Stretch" Height="23" VerticalAlignment="Center" TextWrapping="NoWrap" MaxLines="1" Margin="5,0,0,0" VerticalContentAlignment="Center" TextChanged="TextChanged" />
+            </DockPanel>
+        </UniformGrid>
+        
+        <TextBox Name="textBoxSrc" Grid.Column="0" Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" />
+
+        <TextBox Name="textBoxDest" Grid.Column="1" Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" />
+        
+    </Grid>
+</Page>

@@ -1,0 +1,7 @@
+package org.ls.bekind.client.enumeration;
+
+import org.ls.enumeration.base.BaseUserResponseEnum;
+
+public interface ${SourceData}Enum extends BaseUserResponseEnum {
+
+}

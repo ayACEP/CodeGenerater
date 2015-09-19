@@ -1,0 +1,27 @@
+package org.ls.bekind.client.service.impl;
+
+import java.util.List;
+
+import org.ls.bekind.client.bean.${SourceData}Request;
+import org.ls.bekind.client.bean.${SourceData}Response;
+import org.ls.bekind.client.enumeration.${SourceData}Enum;
+import org.ls.bekind.client.service.${SourceData}Service;
+import org.ls.bekind.client.service.base.BaseBeKindServiceImpl;
+import org.ls.util.ResponseSetter;
+import org.ls.entity.User;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional
+@Service
+public class ${SourceData}ServiceImpl extends BaseBeKindServiceImpl implements ${SourceData}Service {
+
+	@Override
+	public ${SourceData}Response ${sourceData}(${SourceData}Request request, User user) throws Exception {
+		${SourceData}Response response = new ${SourceData}Response();
+		
+		ResponseSetter.set(response, ${SourceData}Enum.SUCCESS);
+		return response;
+	}
+
+}

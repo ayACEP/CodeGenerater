@@ -1,0 +1,36 @@
+package org.ls.bekind.client.controllor;
+
+import org.ls.bekind.client.bean.${SourceData}Request;
+import org.ls.bekind.client.bean.${SourceData}Response;
+import org.ls.bekind.client.enumeration.${SourceData}Enum;
+import org.ls.bekind.client.service.${SourceData}Service;
+import org.ls.client.bean.base.BaseResponse;
+import org.ls.util.ResponseSetter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+@Controller
+public class ${SourceData}Controllor {
+	
+	@Autowired
+	private ${SourceData}Service service;
+	
+	@RequestMapping(value = "/${source_data}", method = RequestMethod.POST)
+	@ResponseBody
+	public BaseResponse getHomeworkList(@RequestBody ${SourceData}Request request) {
+		BaseResponse response;
+		try {
+			response = service.${sourceData}(request, null);
+		} catch (Exception e) {
+			e.printStackTrace();
+			response = new ${SourceData}Response();
+			ResponseSetter.set(response, ${SourceData}Enum.ERR_1);
+		}
+		return response;
+	}
+
+}

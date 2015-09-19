@@ -1,0 +1,7 @@
+package org.ls.bekind.client.bean;
+
+import org.ls.client.bean.base.BaseRequest;
+
+public class ${SourceData}Request extends BaseRequest {
+
+}

@@ -1,0 +1,32 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<script type="text/javascript">
+
+function onBtn${SourceData}Click(e) {
+    var data = genData($("#form${SourceData} div input"));
+    $.ajax({
+        type: "post",
+        url: "${source_data}", 
+        contentType: "application/json; charset=UTF-8",
+        data: data,
+        dataType: "text",
+        success: function(data) {
+            alert(data);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        }
+    });
+}
+
+</script>
+
+<div class="page-header">
+  <h1 id="${SourceData}">请添加接口名称</h1>
+</div>
+<form id="form${SourceData}">
+  <div class="form-group">
+    <label for="${SourceData}Session">用户session</label>
+    <input name="session" type="text" class="form-control" id="${SourceData}Session" placeholder="UserSession">
+  </div>
+  <button class="btn btn-default" type="button" onclick="onBtn${SourceData}Click(this)">Post</button>
+</form>
