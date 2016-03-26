@@ -1,14 +1,8 @@
-package org.ls.bekind.client.service.impl;
+package org.ls.bekind.client.inf.${source_data};
 
-import java.util.List;
-
-import org.ls.bekind.client.bean.${SourceData}Request;
-import org.ls.bekind.client.bean.${SourceData}Response;
-import org.ls.bekind.client.enumeration.${SourceData}Enum;
-import org.ls.bekind.client.service.${SourceData}Service;
-import org.ls.bekind.client.service.base.BaseBeKindServiceImpl;
-import org.ls.util.ResponseSetter;
+import org.ls.bekind.client.service.BaseBeKindServiceImpl;
 import org.ls.entity.User;
+import org.ls.util.ResponseSetter;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,10 +1,6 @@
-package org.ls.bekind.client.controllor;
+package org.ls.bekind.client.inf.${source_data};
 
-import org.ls.bekind.client.bean.${SourceData}Request;
-import org.ls.bekind.client.bean.${SourceData}Response;
-import org.ls.bekind.client.enumeration.${SourceData}Enum;
-import org.ls.bekind.client.service.${SourceData}Service;
-import org.ls.client.bean.base.BaseResponse;
+import org.ls.net.bean.BaseResponse;
 import org.ls.util.ResponseSetter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

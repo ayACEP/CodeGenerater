@@ -1,7 +1,7 @@
-package org.ls.bekind.client.bean;
+package org.ls.bekind.client.inf.${source_data};
 
-import org.ls.client.bean.base.BaseUserRequest;
+import org.ls.net.bean.BaseResponse;
 
-public class ${SourceData}Response extends BaseUserResponse {
+public class ${SourceData}Response extends BaseResponse {
 
 }

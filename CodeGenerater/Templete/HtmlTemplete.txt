@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <script type="text/javascript">
 
 function onBtn${SourceData}Click(e) {
@@ -25,8 +25,8 @@ function onBtn${SourceData}Click(e) {
 </div>
 <form id="form${SourceData}">
   <div class="form-group">
-    <label for="${SourceData}Session">用户session</label>
-    <input name="session" type="text" class="form-control" id="${SourceData}Session" placeholder="UserSession">
+    <label for="${sourceData}Session">用户session</label>
+    <input name="session" type="text" class="form-control" id="${sourceData}Session" placeholder="UserSession">
   </div>
   <button class="btn btn-default" type="button" onclick="onBtn${SourceData}Click(this)">Post</button>
 </form>

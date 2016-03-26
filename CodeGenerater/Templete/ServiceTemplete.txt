@@ -1,11 +1,9 @@
-package org.ls.bekind.client.service;
+package org.ls.bekind.client.inf.${source_data};
 
-import org.ls.bekind.client.bean.${SourceData}Request;
-import org.ls.client.bean.base.BaseResponse;
 import org.ls.entity.User;
 
 public interface ${SourceData}Service {
 	
-	public BaseResponse ${sourceData}(${SourceData}Request request, User user) throws Exception;
+	public ${SourceData}Response ${sourceData}(${SourceData}Request request, User user) throws Exception;
 
 }
