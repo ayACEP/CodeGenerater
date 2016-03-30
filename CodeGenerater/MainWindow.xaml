@@ -16,13 +16,13 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <ListBox Grid.Column="0" x:Name="listBoxItems" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,0" SelectionChanged="listBoxItems_SelectionChanged" />
+        <ListBox Grid.Column="0" x:Name="listBoxItems" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,10" SelectionChanged="listBoxItems_SelectionChanged" />
 
-        <StackPanel Grid.Column="1">
+        <StackPanel Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="10,10,10,10">
 
-            <TextBox x:Name="textBoxSource" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Height="23" VerticalAlignment="Center" TextWrapping="NoWrap" MaxLines="1" Margin="5,0,0,0" VerticalContentAlignment="Center" TextChanged="textBoxSource_TextChanged" />
+            <TextBox x:Name="textBoxSource" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" Height="23" VerticalAlignment="Center" TextWrapping="NoWrap" MaxLines="1" VerticalContentAlignment="Center" TextChanged="textBoxSource_TextChanged" />
 
-            <Frame Name="layoutContent" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,10,10,0" />
+            <Frame Name="layoutContent" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="460" />
 
         </StackPanel>
         

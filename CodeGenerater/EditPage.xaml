@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:CodeGenerater"
       mc:Ignorable="d" 
       d:DesignHeight="400" d:DesignWidth="600"
-      Title="EditPage">
+      Title="EditPage" VerticalAlignment="Stretch">
 
     <Grid>
 
@@ -46,8 +46,8 @@
                 <TextBox x:Name="textBoxDest3" HorizontalAlignment="Stretch" Height="23" VerticalAlignment="Center" TextWrapping="NoWrap" MaxLines="1" Margin="5,0,0,0" VerticalContentAlignment="Center" TextChanged="TextChanged" />
             </DockPanel>
         </UniformGrid>
-        
-        <TextBox Name="textBoxSrc" Grid.Column="0" Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" />
+
+        <TextBox Name="textBoxSrc" Grid.Column="0" Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" />
 
         <TextBox Name="textBoxDest" Grid.Column="1" Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" />
         

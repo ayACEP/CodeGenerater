@@ -22,7 +22,7 @@ namespace CodeGenerater
     public partial class EditPage : Page
     {
         private string editName;
-        
+
         private string fileName;
         private string filePath;
 
@@ -107,7 +107,7 @@ namespace CodeGenerater
                 destContent = value;
             }
         }
-        
+
         public EditPage()
         {
             InitializeComponent();
@@ -115,18 +115,26 @@ namespace CodeGenerater
 
         public void Load()
         {
-            FileStream fs = new FileStream(TempletePath, FileMode.Open);
-            byte[] data = new byte[fs.Length];
-            fs.Read(data, 0, data.Length);
-            fs.Close();
-            TempleteContent = Encoding.UTF8.GetString(data);
-            textBoxSrc.Text = TempleteContent;
-            Replace("");
+            try
+            {
+                FileStream fs = new FileStream(TempletePath, FileMode.Open);
+                byte[] data = new byte[fs.Length];
+                fs.Read(data, 0, data.Length);
+                fs.Close();
+                TempleteContent = Encoding.UTF8.GetString(data);
+                textBoxSrc.Text = TempleteContent;
+                Replace("");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("模板读取失败\n" + ex.ToString());
+                throw;
+            }
         }
 
         public void Replace(string str)
         {
-            ChangeName(str);
+            ChangeNameFromLowerCase(str);
             GenCode();
         }
 
@@ -140,7 +148,39 @@ namespace CodeGenerater
             textBoxDest.Text = sb.ToString();
         }
 
-        private void ChangeName(string str)
+        private void ChangeNameFromLowerCase(string str)
+        {
+            if (str == null || "".Equals(str))
+            {
+                return;
+            }
+            StringBuilder sb = new StringBuilder();
+            int begin = 0;
+            int end = 0;
+            string temp = str;
+            while (true)
+            {
+                end = str.IndexOf("_", begin);
+                if (end == -1)
+                {
+                    end = str.Length;
+                }
+                temp = str.Substring(begin, end - begin);
+                begin = end + 1;
+                sb.Append(temp.Substring(0, 1).ToUpper());
+                if (temp.Length > 1)
+                {
+                    sb.Append(temp.Substring(1));
+                }
+                if (end == str.Length)
+                {
+                    break;
+                }
+            }
+            ChangeNameFromCamelCase(sb.ToString());
+        }
+
+        private void ChangeNameFromCamelCase(string str)
         {
             if (str.Length == 0)
             {
@@ -154,7 +194,14 @@ namespace CodeGenerater
 
             string str2 = str.Substring(0, 1).ToLower() + str.Substring(1);
             textBoxDest2.Text = str2;
+            
+            textBoxDest3.Text = ToLowerCase(str);
 
+            FileName = str + EditName;
+        }
+
+        public string ToLowerCase(string str)
+        {
             StringBuilder sb = new StringBuilder(str);
             for (int i = 0; i < sb.Length; i++)
             {
@@ -167,9 +214,7 @@ namespace CodeGenerater
                     }
                 }
             }
-            textBoxDest3.Text = sb.ToString();
-
-            FileName = str + EditName;
+            return sb.ToString();
         }
 
         private void TextChanged(object sender, TextChangedEventArgs e)

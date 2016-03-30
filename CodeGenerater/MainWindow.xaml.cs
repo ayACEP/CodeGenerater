@@ -28,68 +28,107 @@ namespace CodeGenerater
         private EditPage requestEdit;
         private EditPage responseEdit;
         private EditPage htmlEdit;
-        private List<EditPage> editPageList;
+        private List<EditPage> editPageList = new List<EditPage>();
+
+        private static string BASE_PATH = "org/ls/synctest/";
 
         public MainWindow()
         {
             InitializeComponent();
 
             textBoxSource.Focus();
+            try
+            {
+                StreamReader sr = new StreamReader("templete_list.txt", Encoding.UTF8);
+                while (true)
+                {
+                    string line = sr.ReadLine();
+                    if (line == null)
+                    {
+                        break;
+                    }
+                    if (line.Equals(""))
+                    {
+                        continue;
+                    }
+                    string[] param = line.Split(",".ToArray());
+                    if (param.Length != 2)
+                    {
+                        continue;
+                    }
 
-            controllorEdit = new EditPage();
-            controllorEdit.EditName = "Controllor";
-            controllorEdit.FilePath = "org/ls/bekind/client/controllor/";
-            controllorEdit.TempletePath = "Templete/ControllorTemplete.txt";
-            controllorEdit.Load();
-            serviceEdit = new EditPage();
-            serviceEdit.EditName = "Service";
-            serviceEdit.FilePath = "org/ls/bekind/client/service/";
-            serviceEdit.TempletePath = "Templete/ServiceTemplete.txt";
-            serviceEdit.Load();
-            serviceImplEdit = new EditPage();
-            serviceImplEdit.EditName = "ServiceImpl";
-            serviceImplEdit.FilePath = "org/ls/bekind/client/service/impl/";
-            serviceImplEdit.TempletePath = "Templete/ServiceImplTemplete.txt";
-            serviceImplEdit.Load();
-            enumEdit = new EditPage();
-            enumEdit.EditName = "Enum";
-            enumEdit.FilePath = "org/ls/bekind/client/enumeration/";
-            enumEdit.TempletePath = "Templete/EnumTemplete.txt";
-            enumEdit.Load();
-            requestEdit = new EditPage();
-            requestEdit.EditName = "Request";
-            requestEdit.FilePath = "org/ls/bekind/client/bean";
-            requestEdit.TempletePath = "Templete/RequestTemplete.txt";
-            requestEdit.Load();
-            responseEdit = new EditPage();
-            responseEdit.EditName = "Response";
-            responseEdit.FilePath = "org/ls/bekind/client/bean";
-            responseEdit.TempletePath = "Templete/ResponseTemplete.txt";
-            responseEdit.Load();
-            htmlEdit = new EditPage();
-            htmlEdit.EditName = "Html";
-            htmlEdit.FilePath = "WebContent/WEB-INF/page/interface_test";
-            htmlEdit.TempletePath = "Templete/HtmlTemplete.txt";
-            htmlEdit.Load();
-            layoutContent.Content = controllorEdit;
+                    EditPage ep = new EditPage();
+                    ep.EditName = param[0].Trim();
+                    ep.FilePath = param[1].Trim();
+                    ep.TempletePath = "Templete/" + ep.EditName + "Templete.txt";
 
-            editPageList = new List<EditPage>();
-            editPageList.Add(controllorEdit);
-            editPageList.Add(serviceEdit);
-            editPageList.Add(serviceImplEdit);
-            editPageList.Add(enumEdit);
-            editPageList.Add(requestEdit);
-            editPageList.Add(responseEdit);
-            editPageList.Add(htmlEdit);
+                    ep.Load();
+                    editPageList.Add(ep);
+                    listBoxItems.Items.Add(ep.EditName);
+                }
+                sr.Close();
+                layoutContent.Content = editPageList.Count > 0 ? editPageList[0] : null;
+                listBoxItems.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+                throw;
+            }
 
-            listBoxItems.Items.Add("Controllor");
-            listBoxItems.Items.Add("Service");
-            listBoxItems.Items.Add("ServiceImpl");
-            listBoxItems.Items.Add("Enum");
-            listBoxItems.Items.Add("Request");
-            listBoxItems.Items.Add("Response");
-            listBoxItems.Items.Add("Html");
-            listBoxItems.SelectedIndex = 0;
+            //controllorEdit = new EditPage();
+            //controllorEdit.EditName = "Controllor";
+            //controllorEdit.FilePath = BASE_PATH/* + "controllor/"*/;
+            //controllorEdit.TempletePath = "Templete/ControllorTemplete.txt";
+            //controllorEdit.Load();
+            //serviceEdit = new EditPage();
+            //serviceEdit.EditName = "Service";
+            //serviceEdit.FilePath = BASE_PATH/* + "service/"*/;
+            //serviceEdit.TempletePath = "Templete/ServiceTemplete.txt";
+            //serviceEdit.Load();
+            //serviceImplEdit = new EditPage();
+            //serviceImplEdit.EditName = "ServiceImpl";
+            //serviceImplEdit.FilePath = BASE_PATH/* + "service/impl/"*/;
+            //serviceImplEdit.TempletePath = "Templete/ServiceImplTemplete.txt";
+            //serviceImplEdit.Load();
+            //enumEdit = new EditPage();
+            //enumEdit.EditName = "Enum";
+            //enumEdit.FilePath = BASE_PATH/* + "enumeration/"*/;
+            //enumEdit.TempletePath = "Templete/EnumTemplete.txt";
+            //enumEdit.Load();
+            //requestEdit = new EditPage();
+            //requestEdit.EditName = "Request";
+            //requestEdit.FilePath = BASE_PATH/* + "bean/"*/;
+            //requestEdit.TempletePath = "Templete/RequestTemplete.txt";
+            //requestEdit.Load();
+            //responseEdit = new EditPage();
+            //responseEdit.EditName = "Response";
+            //responseEdit.FilePath = BASE_PATH/* + "bean/"*/;
+            //responseEdit.TempletePath = "Templete/ResponseTemplete.txt";
+            //responseEdit.Load();
+            //htmlEdit = new EditPage();
+            //htmlEdit.EditName = "Html";
+            //htmlEdit.FilePath = "WebContent/WEB-INF/page/interface_test";
+            //htmlEdit.TempletePath = "Templete/HtmlTemplete.txt";
+            //htmlEdit.Load();
+
+
+            
+            //editPageList.Add(controllorEdit);
+            //editPageList.Add(serviceEdit);
+            //editPageList.Add(serviceImplEdit);
+            //editPageList.Add(enumEdit);
+            //editPageList.Add(requestEdit);
+            //editPageList.Add(responseEdit);
+            //editPageList.Add(htmlEdit);
+
+            //listBoxItems.Items.Add("Controllor");
+            //listBoxItems.Items.Add("Service");
+            //listBoxItems.Items.Add("ServiceImpl");
+            //listBoxItems.Items.Add("Enum");
+            //listBoxItems.Items.Add("Request");
+            //listBoxItems.Items.Add("Response");
+            //listBoxItems.Items.Add("Html");
         }
         
         private void listBoxItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -107,52 +146,69 @@ namespace CodeGenerater
         
         private void buttonGen_Click(object sender, RoutedEventArgs e)
         {
+            StreamReader listSr = null;
+            List<string> interfaceName = new List<string>();
             try
             {
-                List<string> interfaceName = new List<string>();
-                //interfaceName.Add("GetFriendList");
-                //interfaceName.Add("GetMessageList");
-                //interfaceName.Add("GetHomeworkTodayFriendList");
-                //interfaceName.Add("GetMyHomeworkList");
-                //interfaceName.Add("GetHomeworkFriendList");
-                //interfaceName.Add("GetFriend");
-                //interfaceName.Add("GetCreditTopNAndMyRank");
-                //interfaceName.Add("PutUser");
-                //interfaceName.Add("PutCertification");
-                //interfaceName.Add("SyncCredit");
-                //interfaceName.Add("SyncCreditRecord");
-                //interfaceName.Add("SyncHomeworkCount");
-                //interfaceName.Add("AttentionUser");
-                //interfaceName.Add("CancelAttentionUser");
-                //interfaceName.Add("PutUserHeadImg");
-                //interfaceName.Add("PutUserName");
-                //interfaceName.Add("PutUserNickname");
-                //interfaceName.Add("PutUserSex");
-                //interfaceName.Add("PutUserBirthday");
-                //interfaceName.Add("PutUserRegion");
-                interfaceName.Add("AddHomework");
+                listSr = new StreamReader("list.txt", Encoding.UTF8);
+                while (true)
+                {
+                    string line = listSr.ReadLine();
+                    if (line == null)
+                    {
+                        break;
+                    }
+                    if (line.Equals(""))
+                    {
+                        continue;
+                    }
+                    interfaceName.Add(line);
+                }
+                listSr.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("生成失败\n" + ex.ToString());
+                return;
+            }
+            finally
+            {
+                if (listSr != null)
+                {
+                    listSr.Close();
+                }
+            }
+
+
+
+            try
+            {
+                DirectoryInfo rootDi = Directory.CreateDirectory("GenCode");
                 foreach (string name in interfaceName)
                 {
                     foreach (EditPage ep in editPageList)
                     {
-                        ep.Replace(name);
-                    }
-                    DirectoryInfo rootDi = Directory.CreateDirectory("GenCode");
-                    foreach (EditPage ep in editPageList)
-                    {
-                        DirectoryInfo di = Directory.CreateDirectory(rootDi.Name + "/" + ep.FilePath);
-                        FileStream fs = File.Create(di.FullName + "/" + ep.FileName + ".java");
-                        byte[] data = Encoding.UTF8.GetBytes(ep.DestContent);
-                        fs.Write(data, 0, data.Length);
-                        fs.Close();
+                        try
+                        {
+                            ep.Replace(name);
+                            DirectoryInfo di = Directory.CreateDirectory(rootDi.Name + "/" + ep.FilePath + "/" + ep.ToLowerCase(name));
+                            FileStream fs = File.Create(di.FullName + "/" + ep.FileName + ".java");
+                            byte[] data = Encoding.UTF8.GetBytes(ep.DestContent);
+                            fs.Write(data, 0, data.Length);
+                            fs.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(name + "生成失败\n" + ex.ToString());
+                        }
                     }
                 }
+                MessageBox.Show("生成成功");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("生成失败");
+                MessageBox.Show("生成失败\n" + ex.ToString());
             }
-            MessageBox.Show("生成成功");
         }
 
         private void textBoxSource_TextChanged(object sender, TextChangedEventArgs e)
