@@ -52,7 +52,7 @@ namespace CodeGenerater
                         continue;
                     }
                     string[] param = line.Split(",".ToArray());
-                    if (param.Length != 2)
+                    if (param.Length != 4)
                     {
                         continue;
                     }
@@ -60,6 +60,8 @@ namespace CodeGenerater
                     EditPage ep = new EditPage();
                     ep.EditName = param[0].Trim();
                     ep.FilePath = param[1].Trim();
+                    ep.ExtName = param[2].Trim();
+                    ep.FileNameCase = param[3].Trim();
                     ep.TempletePath = "Templete/" + ep.EditName + "Templete.txt";
 
                     ep.Load();
@@ -191,8 +193,16 @@ namespace CodeGenerater
                         try
                         {
                             ep.Replace(name);
-                            DirectoryInfo di = Directory.CreateDirectory(rootDi.Name + "/" + ep.FilePath + "/" + ep.ToLowerCase(name));
-                            FileStream fs = File.Create(di.FullName + "/" + ep.FileName + ".java");
+                            DirectoryInfo di;
+                            if (ep.FileNameCase.Equals("lower"))
+                            {
+                                di = Directory.CreateDirectory(rootDi.Name + "/" + ep.FilePath);
+                            }
+                            else
+                            {
+                                di = Directory.CreateDirectory(rootDi.Name + "/" + ep.FilePath + "/" + ep.FromCamelToLowerCase(name));
+                            }
+                            FileStream fs = File.Create(di.FullName + "/" + ep.FileName + "." + ep.ExtName);
                             byte[] data = Encoding.UTF8.GetBytes(ep.DestContent);
                             fs.Write(data, 0, data.Length);
                             fs.Close();

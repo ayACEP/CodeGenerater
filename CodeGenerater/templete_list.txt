@@ -1,7 +1,7 @@
-Controllor,org/ls/bekind/
-Service,org/ls/bekind/
-ServiceImpl,org/ls/bekind/
-Enum,org/ls/bekind/
-Request,org/ls/bekind/
-Response,org/ls/bekind/
-Html,WebContent/WEB-INF/page/interface_test
+Controllor,org/ls/bekind/,java,Camel
+Service,org/ls/bekind/,java,Camel
+ServiceImpl,org/ls/bekind/,java,Camel
+Enum,org/ls/bekind/,java,Camel
+Request,org/ls/bekind/,java,Camel
+Response,org/ls/bekind/,java,Camel
+Html,WebContent/WEB-INF/page/interface_test,jsp,lower

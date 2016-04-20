@@ -30,6 +30,12 @@ namespace CodeGenerater
         private string templeteContent;
         private string destContent;
 
+        // 扩展名
+        private string extName;
+
+        // 输出文件名的命名方法
+        private string fileNameCase;
+
         public string EditName
         {
             get
@@ -105,6 +111,32 @@ namespace CodeGenerater
             set
             {
                 destContent = value;
+            }
+        }
+
+        public string ExtName
+        {
+            get
+            {
+                return extName;
+            }
+
+            set
+            {
+                extName = value;
+            }
+        }
+
+        public string FileNameCase
+        {
+            get
+            {
+                return fileNameCase;
+            }
+
+            set
+            {
+                fileNameCase = value;
             }
         }
 
@@ -187,20 +219,41 @@ namespace CodeGenerater
                 textBoxDest1.Text = "";
                 textBoxDest2.Text = "";
                 textBoxDest3.Text = "";
-                fileName = str + EditName;
+                FileName = str + EditName;
                 return;
             }
+
             textBoxDest1.Text = str;
 
-            string str2 = str.Substring(0, 1).ToLower() + str.Substring(1);
-            textBoxDest2.Text = str2;
-            
-            textBoxDest3.Text = ToLowerCase(str);
+            textBoxDest2.Text = FromCamelTocamelCase(str);
 
-            FileName = str + EditName;
+            textBoxDest3.Text = FromCamelToLowerCase(str);
+
+            switch (FileNameCase)
+            {
+                case "Camel":
+                    FileName = str + EditName;
+                    break;
+                case "camel":
+                    FileName = textBoxDest2.Text + EditName;
+                    break;
+                case "lower":
+                    FileName = textBoxDest3.Text;
+                    break;
+                default:
+                    FileName = str + EditName;
+                    break;
+            }
+            
+        }
+        
+        public string FromCamelTocamelCase(String str)
+        {
+            string str2 = str.Substring(0, 1).ToLower() + str.Substring(1);
+            return str2;
         }
 
-        public string ToLowerCase(string str)
+        public string FromCamelToLowerCase(string str)
         {
             StringBuilder sb = new StringBuilder(str);
             for (int i = 0; i < sb.Length; i++)
@@ -211,6 +264,7 @@ namespace CodeGenerater
                     if (i != 0)
                     {
                         sb.Insert(i, "_");
+                        i++;
                     }
                 }
             }
