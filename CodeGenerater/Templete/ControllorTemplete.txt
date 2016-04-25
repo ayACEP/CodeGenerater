@@ -17,7 +17,7 @@ public class ${SourceData}Controllor {
 	
 	@RequestMapping(value = "/${source_data}", method = RequestMethod.POST)
 	@ResponseBody
-	public BaseResponse getHomeworkList(@RequestBody ${SourceData}Request request) {
+	public BaseResponse ${SourceData}(@RequestBody ${SourceData}Request request) {
 		BaseResponse response;
 		try {
 			response = service.${sourceData}(request, null);
