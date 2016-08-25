@@ -1,0 +1,14 @@
+package com.shanyisheng.bekind.net.inf.${source_data};
+
+import android.content.Context;
+
+import com.shanyisheng.bekind.app.Const;
+import com.shanyisheng.bekind.net.BaseBekindRequest;
+
+public class ${SourceData} extends BaseBekindRequest<${SourceData}Response> {
+
+	public ${SourceData}(Context context, boolean isShowDialog, String message, boolean cancelable, ${SourceData}Request request) {
+		super(context, isShowDialog, message, cancelable, Const.BASE_URL + "${source_data}", request, ${SourceData}Response.class);
+	}
+
+}

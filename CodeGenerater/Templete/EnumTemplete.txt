@@ -1,4 +1,4 @@
-package org.ls.bekind.client.inf.${source_data};
+package com.shanyisheng.client.inf.${source_data};
 
 import org.ls.enumeration.base.BaseResponseEnum;
 

@@ -1,4 +1,4 @@
-package com.shanyisheng.client.inf.${source_data};
+package com.shanyisheng.bekind.net.inf.${source_data};
 
 import org.ls.net.bean.BaseResponse;
 

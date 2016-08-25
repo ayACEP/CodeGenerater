@@ -103,7 +103,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="bin\Debug\Templete\AndroidInterfaceRequestTemplete.txt" />
+    <Resource Include="bin\Debug\Templete\AndroidInterfaceResponseTemplete.txt" />
+    <Resource Include="bin\Debug\Templete\AndroidInterfaceTemplete.txt" />
     <Content Include="list.txt" />
+    <Content Include="Templete\AndroidInterfaceTemplete.txt" />
+    <Content Include="Templete\AndroidInterfaceRequestTemplete.txt" />
+    <Content Include="Templete\AndroidInterfaceResponseTemplete.txt" />
     <Content Include="templete_list.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -115,6 +121,7 @@
     <Resource Include="Templete\ServiceImplTemplete.txt" />
     <Resource Include="Templete\ServiceTemplete.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

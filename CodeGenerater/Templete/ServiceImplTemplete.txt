@@ -1,6 +1,6 @@
-package org.ls.bekind.client.inf.${source_data};
+package com.shanyisheng.client.inf.${source_data};
 
-import org.ls.bekind.client.service.BaseBeKindServiceImpl;
+import com.shanyisheng.client.service.BaseBeKindServiceImpl;
 import org.ls.entity.User;
 import org.ls.util.ResponseSetter;
 import org.springframework.stereotype.Service;
